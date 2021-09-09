@@ -7,6 +7,7 @@ target 'RickAndMortyMVVM' do
   pod 'Firebase/Analytics'
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
+  pod 'Kingfisher'
   # Pods for RickAndMortyMVVM
 
 end

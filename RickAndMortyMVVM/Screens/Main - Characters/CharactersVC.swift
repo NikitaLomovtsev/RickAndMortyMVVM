@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import Kingfisher
 
 class CharactersVC: UIViewController, CharactersVMDelegate{
     
@@ -17,6 +18,9 @@ class CharactersVC: UIViewController, CharactersVMDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        KingfisherManager.shared.cache.clearCache()
+//        KingfisherManager.shared.cache.clearDiskCache()
+//        KingfisherManager.shared.cache.cleanExpiredCache()
         setupView()
     }
     
@@ -78,14 +82,12 @@ extension CharactersVC: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CharacterCell", for: indexPath) as! CharactersCell
         let model = viewModel.filteredCharacters[indexPath.row]
-        if let image = UIImage(named: "loadingSnapshot"){
-        cell.configure(model: model, image: (viewModel.images[model.image] ?? image))
-        }
+        cell.configure(model: model)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel.sendData(row: indexPath.row)
+        viewModel.sendData(character: viewModel.filteredCharacters[indexPath.row])
         self.present(viewModel.detailsVC, animated: true, completion: nil)
     }
     

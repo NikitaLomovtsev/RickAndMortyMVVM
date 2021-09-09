@@ -31,7 +31,6 @@ final class CharacterDetailsVM{
             self.generateDataForSelectedCharacter()
             self.tellDelegateToStopSpinner()
             self.tellDelegateToReloadData()
-            self.getSnapshotImage()
         }
     }
     
@@ -63,19 +62,6 @@ final class CharacterDetailsVM{
             CharacterDetails(header: "LOCATION", row: [selectedCharacter.location.name, selectedCharacter.origin.name]),
             CharacterDetails(header: "EPISODES", row: episodesNames)
         ]
-    }
-    
-    func getSnapshotImage(){
-        let dispatchGroup = DispatchGroup()
-        dispatchGroup.enter()
-        guard let selectedCharacter = selectedCharacter else { return }
-        NetworkManager.shared.fetchImage(withUrlString: selectedCharacter.image) { image in
-            self.snapshotImage = image
-            dispatchGroup.leave()
-        }
-        dispatchGroup.notify(queue: .main){
-        self.tellDelegateToReloadData()
-        }
     }
     
     

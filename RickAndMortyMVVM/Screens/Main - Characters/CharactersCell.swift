@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class CharactersCell: UITableViewCell {
 
@@ -16,7 +17,7 @@ class CharactersCell: UITableViewCell {
     @IBOutlet weak var snapshotImg: UIImageView!
     
     
-    func configure(model: Characters, image: UIImage){
+    func configure(model: Characters){
         statusImg.layer.cornerRadius = statusImg.frame.size.width / 2
         nameLbl.text = model.name
         statusLbl.text = "\(model.status) - \(model.species) - \(model.gender)"
@@ -33,7 +34,8 @@ class CharactersCell: UITableViewCell {
         }
         snapshotImg.layer.cornerRadius = 10
         snapshotImg.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
-        snapshotImg.image = image
+        snapshotImg.kf.indicatorType = .activity
+        snapshotImg.kf.setImage(with: URL(string: model.image), placeholder: UIImage(named: "loadingSnapshot"), options: [.transition(.fade(0.4)), .cacheMemoryOnly])
     }
     
 }

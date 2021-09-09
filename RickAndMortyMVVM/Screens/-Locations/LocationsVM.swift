@@ -21,7 +21,6 @@ final class LocationsVM{
     var pages: Int?
     var locations:[Locations] = []
     var alphabetLocations: [AlphabetLocations] = []
-    var alphabet:[String] = []
     
     func getData(){
         tellDelegateToStartSpinner()
@@ -73,7 +72,6 @@ final class LocationsVM{
         for letter in "ABCDEFGHIJKLMNOPQRSTUVWXYZ"{
             guard locations.filter({$0.name.hasPrefix("\(letter)")}).count != 0 else { return }
             alphabetLocations.append(AlphabetLocations(header: "\(letter)", row: locations.filter({$0.name.hasPrefix("\(letter)")})))
-            alphabet.append("\(letter)")
         }
     }
     

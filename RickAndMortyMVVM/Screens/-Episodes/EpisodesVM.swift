@@ -71,14 +71,11 @@ final class EpisodesVM{
         }
     }
     
-    func sendData(row: Int){
-        EpisodeDetailsVM.selectedEpisodeData = episodes[row]
+    func sendData(episode: Episodes){
+        EpisodeDetailsVM.selectedEpisodeData = episode
     }
     
-    
-    
-    
-    
+
     //Calculate the number of seasons
     func countOfSeasons(){
         var counter = 1

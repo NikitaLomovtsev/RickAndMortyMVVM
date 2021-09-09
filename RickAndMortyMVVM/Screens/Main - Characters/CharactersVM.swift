@@ -32,7 +32,6 @@ final class CharactersVM{
                 self.filteredCharacters = self.characters
                 self.tellDelegateToReloadData()
                 self.tellDelegateToStopSpinner()
-                self.getImages()
             }
         }
     }
@@ -71,20 +70,8 @@ final class CharactersVM{
         }
     }
     
-    func getImages(){
-        guard let count = count else { return }
-        for number in 0..<count{
-            NetworkManager.shared.getImage(withUrlString: characters[number].image) { image in
-                DispatchQueue.main.async{
-                self.images.updateValue(image, forKey: self.characters[number].image)
-                }
-                self.tellDelegateToReloadData()
-            }
-        }
-    }
-    
-    func sendData(row: Int){
-        CharacterDetailsVM.selectedCharacterData = characters[row]
+    func sendData(character: Characters){
+        CharacterDetailsVM.selectedCharacterData = character
     }
     
     func search(text: String){

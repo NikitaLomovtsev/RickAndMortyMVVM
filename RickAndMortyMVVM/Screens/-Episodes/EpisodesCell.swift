@@ -15,7 +15,7 @@ class EpisodesCell: UITableViewCell {
     @IBOutlet weak var airDateLbl: UILabel!
 
 
-    func configure(model: Episodes){
+    func configure(data model: Episodes){
 
         nameLbl.text = model.name
         episodeLbl.text = model.episode

@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import Kingfisher
 
 class CharacterDetailsVC: UIViewController, CharacterDetailsVMDelegate {
     
@@ -58,12 +58,9 @@ extension CharacterDetailsVC: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0{
             let cell = characterDetailsTableView.dequeueReusableCell(withIdentifier: "SnapshotCell", for: indexPath) as! CharacterDetailsCell
-                    cell.snapshotImg.layer.cornerRadius = 10
-            if viewModel.snapshotImage == nil{
-            cell.snapshotImg.image = UIImage(named: "loadingSnapshot")
-            } else {
-                cell.snapshotImg.image = viewModel.snapshotImage
-            }
+            cell.snapshotImg.layer.cornerRadius = 10
+            cell.snapshotImg.kf.indicatorType = .activity
+            cell.snapshotImg.kf.setImage(with: URL(string: viewModel.characterDetails[indexPath.section].row.first!), placeholder: UIImage(named: "loadingSnapshot"), options: [.transition(.fade(0.4))])
             return cell
         }
         

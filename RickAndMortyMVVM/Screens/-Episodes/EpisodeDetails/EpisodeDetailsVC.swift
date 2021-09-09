@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class EpisodeDetailsVC: UIViewController, EpisodeDetailsVMDelegate {
 
@@ -57,18 +58,15 @@ extension EpisodeDetailsVC: UITableViewDataSource, UITableViewDelegate{
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+        let data = viewModel.episodeDetails[indexPath.section].row[indexPath.row]
         if indexPath.section == 0{
             let cell = episodeDetailsTableView.dequeueReusableCell(withIdentifier: "InfoCell", for: indexPath) as! EpisodeDetailsCell
-            cell.bgImg.layer.cornerRadius = 10
-            cell.infoLbl.text = viewModel.episodeDetails[indexPath.section].row[indexPath.row] as? String
-            cell.staticLbl.text = viewModel.infoStaticText[indexPath.row]
+            let staticText = viewModel.infoStaticText[indexPath.row]
+            cell.configureInfo(data: data as! String, staticText: staticText)
             return cell
         }
-        
         let cell = episodeDetailsTableView.dequeueReusableCell(withIdentifier: "ResidentsCell", for: indexPath) as! EpisodeDetailsCell
-        cell.bgImg.layer.cornerRadius = 10
-        cell.infoLbl.text = viewModel.episodeDetails[indexPath.section].row[indexPath.row] as? String
+        cell.configureCharacters(data: data as! Characters)
         return cell
     }
 }

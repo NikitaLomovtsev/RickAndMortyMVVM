@@ -62,6 +62,6 @@ extension LocationsVC: UITableViewDataSource, UITableViewDelegate{
     }
     
     func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        return viewModel.alphabet
+        return viewModel.alphabetLocations.map({$0.header})
     }
 }

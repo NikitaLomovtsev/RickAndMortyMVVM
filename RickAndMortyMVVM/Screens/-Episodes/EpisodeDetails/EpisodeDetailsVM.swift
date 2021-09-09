@@ -19,8 +19,7 @@ final class EpisodeDetailsVM{
     static var selectedEpisodeData: Episodes?
     var selectedEpisode: Episodes? { return EpisodeDetailsVM.selectedEpisodeData}
     var episodeDetails: [Seasons] = []
-    var episodeOrLocation: Int?
-    var charactersNames: [String] = []
+    var characters: [Characters] = []
     var infoStaticText = ["Name", "Air date", "Code"]
     
     
@@ -40,7 +39,7 @@ final class EpisodeDetailsVM{
             NetworkManager.shared.downloadData(urlString: element, dataType: Characters.self) { result in
                 switch result{
                 case .success(let character):
-                    self.charactersNames.append(character.name)
+                    self.characters.append(character)
                     dispatchGroup.leave()
                 case .failure(let error):
                     print("\(Errors.dataError.rawValue) \(error)")
@@ -56,7 +55,7 @@ final class EpisodeDetailsVM{
         guard let selectedEpisode = selectedEpisode else { return }
         episodeDetails = [
             Seasons(header: "INFO", row: [selectedEpisode.name, selectedEpisode.airDate, selectedEpisode.episode]),
-            Seasons(header: "CHARACTERS", row: charactersNames)
+            Seasons(header: "CHARACTERS", row: characters)
         ]
     }
     
