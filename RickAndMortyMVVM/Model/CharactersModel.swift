@@ -22,6 +22,7 @@ struct Characters: Decodable{
     let location: Location
     let episode: [String]
     let origin: Origin
+    let url: String
 }
 
 struct CharactersInfo: Decodable{

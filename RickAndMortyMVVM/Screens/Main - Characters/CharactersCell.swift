@@ -35,7 +35,7 @@ class CharactersCell: UITableViewCell {
         snapshotImg.layer.cornerRadius = 10
         snapshotImg.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
         snapshotImg.kf.indicatorType = .activity
-        snapshotImg.kf.setImage(with: URL(string: model.image), placeholder: UIImage(named: "loadingSnapshot"), options: [.transition(.fade(0.4)), .cacheMemoryOnly])
+        snapshotImg.kf.setImage(with: URL(string: model.image), placeholder: UIImage(named: "loadingSnapshot"), options: [.transition(.fade(0.4))])
     }
     
 }

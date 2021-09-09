@@ -15,9 +15,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="qck-tD-3og">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="qck-tD-3og">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.14901960780000001" green="0.14901960780000001" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LocationsCell" id="Ilp-O3-79a" customClass="LocationsCell" customModule="RickAndMortyMVVM" customModuleProvider="target">
@@ -73,6 +72,12 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="qck-tD-3og" secondAttribute="bottom" id="9hB-V8-O9u"/>
+                            <constraint firstItem="qck-tD-3og" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="Jdj-wC-e3J"/>
+                            <constraint firstItem="qck-tD-3og" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="kbc-pZ-NQ9"/>
+                            <constraint firstItem="qck-tD-3og" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="r4K-Tb-vBn"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Locations" image="map.fill" catalog="system" id="GII-Ep-fKp"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" barStyle="black"/>
