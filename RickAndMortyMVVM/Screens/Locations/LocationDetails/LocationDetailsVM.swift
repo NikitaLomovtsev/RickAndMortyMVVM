@@ -21,6 +21,7 @@ final class LocationDetailsVM{
     var locationDetails: [AlphabetLocations] = []
     var characters: [Characters] = []
     var infoStaticText = ["Name", "Dimension", "Type"]
+    var characterDetailsVC: UIViewController { return UIStoryboard(name: "CharacterDetails", bundle: nil).instantiateViewController(identifier: "CharacterDetailsVC")}
     
     
     func getData(){
@@ -57,6 +58,10 @@ final class LocationDetailsVM{
             AlphabetLocations(header: "INFO", row: [selectedLocation.name, selectedLocation.dimension, selectedLocation.type]),
             AlphabetLocations(header: "CHARACTERS", row: characters)
         ]
+    }
+    
+    func sendData(character: Characters){
+        CharacterDetailsVM.selectedCharacterData = character
     }
     
     

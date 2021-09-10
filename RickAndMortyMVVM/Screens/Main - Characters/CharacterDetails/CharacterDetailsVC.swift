@@ -54,42 +54,40 @@ extension CharacterDetailsVC: UITableViewDataSource, UITableViewDelegate{
         return viewModel.characterDetails[section].header
     }
     
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let data = viewModel.characterDetails[indexPath.section].row[indexPath.row]
         if indexPath.section == 0{
             let cell = characterDetailsTableView.dequeueReusableCell(withIdentifier: "SnapshotCell", for: indexPath) as! CharacterDetailsCell
-            cell.snapshotImg.layer.cornerRadius = 10
-            cell.snapshotImg.kf.indicatorType = .activity
-            cell.snapshotImg.kf.setImage(with: URL(string: viewModel.characterDetails[indexPath.section].row.first!), placeholder: UIImage(named: "loadingSnapshot"), options: [.transition(.fade(0.4))])
+            cell.configureSnapshotCell(data: data as! String)
             return cell
         }
-        
         if indexPath.section == 1{
             let cell = characterDetailsTableView.dequeueReusableCell(withIdentifier: "NameCell", for: indexPath) as! CharacterDetailsCell
-            cell.bgImg.layer.cornerRadius = 10
-            cell.infoLbl.text = viewModel.characterDetails[indexPath.section].row[indexPath.row]
+            cell.configureNameCell(data: data as! String)
             return cell
         }
-        
         if indexPath.section == 2{
+            let staticText = viewModel.infoStaticText[indexPath.row]
             let cell = characterDetailsTableView.dequeueReusableCell(withIdentifier: "InfoLocationCell", for: indexPath) as! CharacterDetailsCell
-            cell.infoLbl.text = viewModel.characterDetails[indexPath.section].row[indexPath.row]
-            cell.staticLbl.text = viewModel.infoStaticText[indexPath.row]
-            cell.bgImg.layer.cornerRadius = 10
+            cell.configureInfoLocationCell(data: data as! String, staticText: staticText)
             return cell
         }
-        
         if indexPath.section == 3{
+            let staticText = viewModel.locationStaticText[indexPath.row]
             let cell = characterDetailsTableView.dequeueReusableCell(withIdentifier: "InfoLocationCell", for: indexPath) as! CharacterDetailsCell
-            cell.infoLbl.text = viewModel.characterDetails[indexPath.section].row[indexPath.row]
-            cell.staticLbl.text = viewModel.locationStaticText[indexPath.row]
-            cell.bgImg.layer.cornerRadius = 10
+            cell.configureInfoLocationCell(data: data as! String, staticText: staticText)
             return cell
         }
         
         let cell = characterDetailsTableView.dequeueReusableCell(withIdentifier: "EpisodesCell", for: indexPath) as! CharacterDetailsCell
-        cell.bgImg.layer.cornerRadius = 10
-        cell.infoLbl.text = viewModel.characterDetails[indexPath.section].row[indexPath.row]
+        cell.configureEpisodesCell(data: data as! Episodes)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 4{
+            viewModel.sendData(episode: viewModel.characterDetails[indexPath.section].row[indexPath.row] as! Episodes )
+        self.present(viewModel.episodeDetailsVC, animated: true, completion: nil)
+        }
     }
 }

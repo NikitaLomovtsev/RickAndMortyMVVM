@@ -67,5 +67,12 @@ extension LocationDetailsVC: UITableViewDataSource, UITableViewDelegate{
         cell.configureCharacters(data: data as! Characters)
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 1{
+            viewModel.sendData(character: viewModel.locationDetails[indexPath.section].row[indexPath.row] as! Characters )
+        self.present(viewModel.characterDetailsVC, animated: true, completion: nil)
+        }
+    }
 }
 

@@ -43,8 +43,8 @@ struct Origin: Decodable{
 
 struct CharacterDetails {
     var header: String
-    var row: [String]
-    init(header: String, row: [String]) {
+    var row: [Any]
+    init(header: String, row: [Any]) {
         self.header = header
         self.row = row
     }

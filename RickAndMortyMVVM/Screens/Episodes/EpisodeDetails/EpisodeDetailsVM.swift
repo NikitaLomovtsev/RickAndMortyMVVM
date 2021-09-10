@@ -21,6 +21,7 @@ final class EpisodeDetailsVM{
     var episodeDetails: [Seasons] = []
     var characters: [Characters] = []
     var infoStaticText = ["Name", "Air date", "Code"]
+    var characterDetailsVC: UIViewController { return UIStoryboard(name: "CharacterDetails", bundle: nil).instantiateViewController(identifier: "CharacterDetailsVC")}
     
     
     func getData(){
@@ -57,6 +58,10 @@ final class EpisodeDetailsVM{
             Seasons(header: "INFO", row: [selectedEpisode.name, selectedEpisode.airDate, selectedEpisode.episode]),
             Seasons(header: "CHARACTERS", row: characters)
         ]
+    }
+    
+    func sendData(character: Characters){
+        CharacterDetailsVM.selectedCharacterData = character
     }
     
     

@@ -137,10 +137,10 @@
 		51753EB026E222FD00646A29 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				51B6EFDB26E3B31B00F0DE9E /* Locations */,
-				51B6EFD326E3B05600F0DE9E /* Episodes */,
 				51753EB926E354B600646A29 /* Auth */,
 				51753EB126E2230700646A29 /* Main - Characters */,
+				51B6EFD326E3B05600F0DE9E /* Episodes */,
+				51B6EFDB26E3B31B00F0DE9E /* Locations */,
 			);
 			path = Screens;
 			sourceTree = "<group>";

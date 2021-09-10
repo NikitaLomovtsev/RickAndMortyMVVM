@@ -15,12 +15,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="r8X-Lj-bL4">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="r8X-Lj-bL4">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                                 <color key="backgroundColor" red="0.14901960780000001" green="0.14901960780000001" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="separatorColor" red="0.14901960780000001" green="0.14901960780000001" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SnapshotCell" id="nJK-vI-WLu" customClass="CharacterDetailsCell" customModule="RickAndMortyMVVM" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="SnapshotCell" id="nJK-vI-WLu" customClass="CharacterDetailsCell" customModule="RickAndMortyMVVM" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="49.5" width="414" height="404"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nJK-vI-WLu" id="wxz-3s-hTr">
@@ -46,7 +46,7 @@
                                             <outlet property="snapshotImg" destination="36A-cB-j5f" id="m4Q-C1-iqI"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NameCell" id="i4b-4Q-Ymf" customClass="CharacterDetailsCell" customModule="RickAndMortyMVVM" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="NameCell" id="i4b-4Q-Ymf" customClass="CharacterDetailsCell" customModule="RickAndMortyMVVM" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="453.5" width="414" height="68"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="i4b-4Q-Ymf" id="eoc-oI-GHf">
@@ -81,7 +81,7 @@
                                             <outlet property="infoLbl" destination="gRF-Ew-aQL" id="Jhq-9t-PIi"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="InfoLocationCell" id="MY0-1z-Fk0" customClass="CharacterDetailsCell" customModule="RickAndMortyMVVM" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="InfoLocationCell" id="MY0-1z-Fk0" customClass="CharacterDetailsCell" customModule="RickAndMortyMVVM" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="521.5" width="414" height="55"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MY0-1z-Fk0" id="TJe-mA-Gds">
@@ -128,7 +128,7 @@
                                             <outlet property="staticLbl" destination="UQ5-wU-mRt" id="2Ir-FO-2nm"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="EpisodesCell" id="Bpf-EL-Eep" customClass="CharacterDetailsCell" customModule="RickAndMortyMVVM" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="EpisodesCell" id="Bpf-EL-Eep" customClass="CharacterDetailsCell" customModule="RickAndMortyMVVM" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="576.5" width="414" height="55"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Bpf-EL-Eep" id="HyV-Lt-AJG">
@@ -139,8 +139,17 @@
                                                     <rect key="frame" x="10" y="5" width="394" height="45"/>
                                                     <color key="backgroundColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 </imageView>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.forward" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="pGi-uh-sWd">
+                                                    <rect key="frame" x="384" y="20.5" width="10" height="13.5"/>
+                                                    <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="Mf8-8l-xed"/>
+                                                        <constraint firstAttribute="width" constant="10" id="xXR-pT-44m"/>
+                                                    </constraints>
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small" weight="ultraLight"/>
+                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C1b-OZ-2pP">
-                                                    <rect key="frame" x="25" y="16" width="374" height="23"/>
+                                                    <rect key="frame" x="25" y="16" width="354" height="23"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -151,9 +160,11 @@
                                                 <constraint firstItem="C1b-OZ-2pP" firstAttribute="leading" secondItem="HyV-Lt-AJG" secondAttribute="leadingMargin" constant="5" id="S1f-fy-CdY"/>
                                                 <constraint firstItem="hBo-u6-bgp" firstAttribute="top" secondItem="HyV-Lt-AJG" secondAttribute="top" constant="5" id="SdL-0L-8bC"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="C1b-OZ-2pP" secondAttribute="bottom" constant="5" id="agZ-40-Sks"/>
+                                                <constraint firstItem="pGi-uh-sWd" firstAttribute="centerY" secondItem="hBo-u6-bgp" secondAttribute="centerY" id="b29-2u-FGS"/>
+                                                <constraint firstItem="pGi-uh-sWd" firstAttribute="leading" secondItem="C1b-OZ-2pP" secondAttribute="trailing" constant="5" id="dDD-Ve-2Cp"/>
                                                 <constraint firstAttribute="trailing" secondItem="hBo-u6-bgp" secondAttribute="trailing" constant="10" id="joK-bY-Stx"/>
-                                                <constraint firstItem="C1b-OZ-2pP" firstAttribute="trailing" secondItem="HyV-Lt-AJG" secondAttribute="trailingMargin" constant="5" id="qY5-DH-1sq"/>
                                                 <constraint firstAttribute="bottom" secondItem="hBo-u6-bgp" secondAttribute="bottom" constant="5" id="rhq-4h-Gdk"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="pGi-uh-sWd" secondAttribute="trailing" id="s7o-cF-P60"/>
                                                 <constraint firstItem="hBo-u6-bgp" firstAttribute="leading" secondItem="HyV-Lt-AJG" secondAttribute="leading" constant="10" id="tdg-BB-ybk"/>
                                                 <constraint firstItem="C1b-OZ-2pP" firstAttribute="top" secondItem="HyV-Lt-AJG" secondAttribute="topMargin" constant="5" id="tnq-hj-c7W"/>
                                             </constraints>
@@ -185,4 +196,7 @@
             <point key="canvasLocation" x="-665.21739130434787" y="107.8125"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="chevron.forward" catalog="system" width="96" height="128"/>
+    </resources>
 </document>

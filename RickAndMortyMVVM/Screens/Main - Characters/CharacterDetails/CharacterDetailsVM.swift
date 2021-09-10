@@ -19,10 +19,11 @@ final class CharacterDetailsVM{
     static var selectedCharacterData: Characters?
     var selectedCharacter: Characters? {return CharacterDetailsVM.selectedCharacterData}
     var characterDetails:[CharacterDetails] = []
-    var episodesNames: [String] = []
+    var episodes: [Episodes] = []
     var snapshotImage: UIImage?
     var infoStaticText = ["Species", "Gender", "Status"]
     var locationStaticText = ["Location", "Origin"]
+    var episodeDetailsVC: UIViewController { return UIStoryboard(name: "EpisodeDetails", bundle: nil).instantiateViewController(identifier: "EpisodeDetailsVC")}
     
     
     func getData(){
@@ -41,7 +42,7 @@ final class CharacterDetailsVM{
             NetworkManager.shared.downloadData(urlString: element, dataType: Episodes.self) { result in
                 switch result{
                 case .success(let episode):
-                    self.episodesNames.append(episode.name)
+                    self.episodes.append(episode)
                     dispatchGroup.leave()
                 case .failure(let error):
                     print("\(Errors.dataError.rawValue) \(error)")
@@ -60,10 +61,13 @@ final class CharacterDetailsVM{
             CharacterDetails(header: "NAME", row: [selectedCharacter.name]),
             CharacterDetails(header: "INFO", row: [selectedCharacter.species, selectedCharacter.gender, selectedCharacter.status]),
             CharacterDetails(header: "LOCATION", row: [selectedCharacter.location.name, selectedCharacter.origin.name]),
-            CharacterDetails(header: "EPISODES", row: episodesNames)
+            CharacterDetails(header: "EPISODES", row: episodes)
         ]
     }
     
+    func sendData(episode: Episodes){
+        EpisodeDetailsVM.selectedEpisodeData = episode
+    }
     
 //MARK: Delegate functions
     func tellDelegateToReloadData(){
