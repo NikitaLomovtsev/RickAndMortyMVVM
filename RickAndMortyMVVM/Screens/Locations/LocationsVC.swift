@@ -8,6 +8,7 @@
 import UIKit
 
 class LocationsVC: UIViewController, LocationsVMDelegate {
+    
     var viewModel = LocationsVM()
     @IBOutlet weak var locationsTableView: UITableView!
     override func viewDidLoad() {
@@ -57,11 +58,18 @@ extension LocationsVC: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LocationsCell", for: indexPath) as! LocationsCell
-        cell.configure(model: viewModel.alphabetLocations[indexPath.section].row[indexPath.row])
+        cell.configure(model: viewModel.alphabetLocations[indexPath.section].row[indexPath.row] as! Locations)
         return cell
     }
     
     func sectionIndexTitles(for tableView: UITableView) -> [String]? {
         return viewModel.alphabetLocations.map({$0.header})
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.sendData(location: viewModel.alphabetLocations[indexPath.section].row[indexPath.row] as! Locations)
+//        self.present(viewModel.detailsVC, animated: true, completion: nil)
+        let vc = UIStoryboard(name: "LocationDetails", bundle: nil).instantiateViewController(identifier: "LocationDetailsVC")
+        self.present(vc, animated: true)
     }
 }

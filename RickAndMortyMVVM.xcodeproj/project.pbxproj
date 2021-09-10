@@ -42,6 +42,10 @@
 		51CC41C226E8E7B500B54E03 /* EpisodeDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51CC41C126E8E7B500B54E03 /* EpisodeDetailsCell.swift */; };
 		51CC41C426E8E7C700B54E03 /* EpisodeDetailsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51CC41C326E8E7C700B54E03 /* EpisodeDetailsVM.swift */; };
 		51CC41C626E8E7F600B54E03 /* EpisodeDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51CC41C526E8E7F600B54E03 /* EpisodeDetailsVC.swift */; };
+		51CC41EB26EB615D00B54E03 /* LocationDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51CC41EA26EB615C00B54E03 /* LocationDetails.storyboard */; };
+		51CC41ED26EB617D00B54E03 /* LocationDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51CC41EC26EB617D00B54E03 /* LocationDetailsCell.swift */; };
+		51CC41EF26EB619B00B54E03 /* LocationDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51CC41EE26EB619B00B54E03 /* LocationDetailsVC.swift */; };
+		51CC41F126EB61BD00B54E03 /* LocationDetailsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51CC41F026EB61BD00B54E03 /* LocationDetailsVM.swift */; };
 		6232609F0E73400B11B5CE1C /* Pods_RickAndMortyMVVM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B124DA4B28D083213C14FA0D /* Pods_RickAndMortyMVVM.framework */; };
 /* End PBXBuildFile section */
 
@@ -84,6 +88,10 @@
 		51CC41C126E8E7B500B54E03 /* EpisodeDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailsCell.swift; sourceTree = "<group>"; };
 		51CC41C326E8E7C700B54E03 /* EpisodeDetailsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailsVM.swift; sourceTree = "<group>"; };
 		51CC41C526E8E7F600B54E03 /* EpisodeDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailsVC.swift; sourceTree = "<group>"; };
+		51CC41EA26EB615C00B54E03 /* LocationDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LocationDetails.storyboard; sourceTree = "<group>"; };
+		51CC41EC26EB617D00B54E03 /* LocationDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailsCell.swift; sourceTree = "<group>"; };
+		51CC41EE26EB619B00B54E03 /* LocationDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailsVC.swift; sourceTree = "<group>"; };
+		51CC41F026EB61BD00B54E03 /* LocationDetailsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailsVM.swift; sourceTree = "<group>"; };
 		579A0C289DF6CDBA37A35D58 /* Pods-RickAndMortyMVVM.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RickAndMortyMVVM.release.xcconfig"; path = "Target Support Files/Pods-RickAndMortyMVVM/Pods-RickAndMortyMVVM.release.xcconfig"; sourceTree = "<group>"; };
 		B124DA4B28D083213C14FA0D /* Pods_RickAndMortyMVVM.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RickAndMortyMVVM.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -129,8 +137,8 @@
 		51753EB026E222FD00646A29 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				51B6EFDB26E3B31B00F0DE9E /* -Locations */,
-				51B6EFD326E3B05600F0DE9E /* -Episodes */,
+				51B6EFDB26E3B31B00F0DE9E /* Locations */,
+				51B6EFD326E3B05600F0DE9E /* Episodes */,
 				51753EB926E354B600646A29 /* Auth */,
 				51753EB126E2230700646A29 /* Main - Characters */,
 			);
@@ -232,7 +240,7 @@
 			path = RickAndMortyMVVM;
 			sourceTree = "<group>";
 		};
-		51B6EFD326E3B05600F0DE9E /* -Episodes */ = {
+		51B6EFD326E3B05600F0DE9E /* Episodes */ = {
 			isa = PBXGroup;
 			children = (
 				51B6EFD526E3B07200F0DE9E /* Episodes.storyboard */,
@@ -241,18 +249,19 @@
 				513EED7926E66C4700C44791 /* EpisodesVM.swift */,
 				51CC41BE26E8E74D00B54E03 /* EpisodeDetails */,
 			);
-			path = "-Episodes";
+			path = Episodes;
 			sourceTree = "<group>";
 		};
-		51B6EFDB26E3B31B00F0DE9E /* -Locations */ = {
+		51B6EFDB26E3B31B00F0DE9E /* Locations */ = {
 			isa = PBXGroup;
 			children = (
 				51B6EFDC26E3B33100F0DE9E /* Locations.storyboard */,
 				51CC41BA26E8A0E400B54E03 /* LocationsCell.swift */,
 				51B6EFDE26E3B36800F0DE9E /* LocationsVC.swift */,
 				513EED7D26E66F2F00C44791 /* LocationsVM.swift */,
+				51CC41E926EB613500B54E03 /* LocationDetails */,
 			);
-			path = "-Locations";
+			path = Locations;
 			sourceTree = "<group>";
 		};
 		51CC41BE26E8E74D00B54E03 /* EpisodeDetails */ = {
@@ -264,6 +273,17 @@
 				51CC41C326E8E7C700B54E03 /* EpisodeDetailsVM.swift */,
 			);
 			path = EpisodeDetails;
+			sourceTree = "<group>";
+		};
+		51CC41E926EB613500B54E03 /* LocationDetails */ = {
+			isa = PBXGroup;
+			children = (
+				51CC41EA26EB615C00B54E03 /* LocationDetails.storyboard */,
+				51CC41EC26EB617D00B54E03 /* LocationDetailsCell.swift */,
+				51CC41EE26EB619B00B54E03 /* LocationDetailsVC.swift */,
+				51CC41F026EB61BD00B54E03 /* LocationDetailsVM.swift */,
+			);
+			path = LocationDetails;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -331,6 +351,7 @@
 				51753EBB26E354CE00646A29 /* Auth.storyboard in Resources */,
 				519EBBB426D3988E004F9127 /* Main.storyboard in Resources */,
 				51753EB426E2241E00646A29 /* CharacterDetails.storyboard in Resources */,
+				51CC41EB26EB615D00B54E03 /* LocationDetails.storyboard in Resources */,
 				51B6EFD626E3B07200F0DE9E /* Episodes.storyboard in Resources */,
 				51CC41C026E8E78000B54E03 /* EpisodeDetails.storyboard in Resources */,
 				51B6EFDD26E3B33100F0DE9E /* Locations.storyboard in Resources */,
@@ -387,7 +408,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				51CC41C426E8E7C700B54E03 /* EpisodeDetailsVM.swift in Sources */,
+				51CC41F126EB61BD00B54E03 /* LocationDetailsVM.swift in Sources */,
 				51753EBD26E3577500646A29 /* AuthViewController.swift in Sources */,
+				51CC41EF26EB619B00B54E03 /* LocationDetailsVC.swift in Sources */,
+				51CC41ED26EB617D00B54E03 /* LocationDetailsCell.swift in Sources */,
 				51B6EFE426E4CA5200F0DE9E /* EpisodesModel.swift in Sources */,
 				513EED7A26E66C4700C44791 /* EpisodesVM.swift in Sources */,
 				519259A626E0F90A004E653F /* CharactersVM.swift in Sources */,

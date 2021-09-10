@@ -70,11 +70,6 @@ final class EpisodesVM{
         completion()
         }
     }
-    
-    func sendData(episode: Episodes){
-        EpisodeDetailsVM.selectedEpisodeData = episode
-    }
-    
 
     //Calculate the number of seasons
     func countOfSeasons(){
@@ -99,6 +94,10 @@ final class EpisodesVM{
                 episodesWithSections.append(Seasons(header: "SEASON \(number)", row: episodes.filter({$0.episode.contains("S\(number)")})))
             }
         }
+    }
+    
+    func sendData(episode: Episodes){
+        EpisodeDetailsVM.selectedEpisodeData = episode
     }
     
 //MARK: Delegate functions

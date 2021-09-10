@@ -27,8 +27,8 @@ struct LocationsInfo: Decodable{
 
 struct AlphabetLocations{
     var header: String
-    var row: [Locations]
-    init(header: String, row: [Locations]) {
+    var row: [Any]
+    init(header: String, row: [Any]) {
         self.header = header
         self.row = row
     }
