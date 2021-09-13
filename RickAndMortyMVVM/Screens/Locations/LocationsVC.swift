@@ -33,7 +33,6 @@ class LocationsVC: UIViewController, LocationsVMDelegate {
         spinnerStop()
     }
     
-    //Reload TableView
     func reloadData() {
         DispatchQueue.main.async {
             self.locationsTableView.reloadData()
@@ -68,8 +67,6 @@ extension LocationsVC: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel.sendData(location: viewModel.alphabetLocations[indexPath.section].row[indexPath.row] as! Locations)
-//        self.present(viewModel.detailsVC, animated: true, completion: nil)
-        let vc = UIStoryboard(name: "LocationDetails", bundle: nil).instantiateViewController(identifier: "LocationDetailsVC")
-        self.present(vc, animated: true)
+        self.present(viewModel.detailsVC, animated: true, completion: nil)
     }
 }

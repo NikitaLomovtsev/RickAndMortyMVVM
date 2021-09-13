@@ -21,8 +21,9 @@ final class EpisodesVM{
     var pages: Int?
     var episodes:[Episodes] = []
     var episodesWithSections: [Seasons] = []
-    var seasons = 1 //temporary value, will calculated later
+    var seasons = 1 //temporary value, will calculate later
     var detailsVC: UIViewController { return UIStoryboard(name: "EpisodeDetails", bundle: nil).instantiateViewController(identifier: "EpisodeDetailsVC")}
+    
     
     
     func getData(){

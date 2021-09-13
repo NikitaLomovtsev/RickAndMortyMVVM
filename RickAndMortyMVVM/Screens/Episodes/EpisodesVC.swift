@@ -56,8 +56,9 @@ extension EpisodesVC: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let data = viewModel.episodesWithSections[indexPath.section].row[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "EpisodesCell", for: indexPath) as! EpisodesCell
-        cell.configure(data: viewModel.episodesWithSections[indexPath.section].row[indexPath.row] as! Episodes)
+        cell.configure(data: data as! Episodes)
         return cell
     }
     

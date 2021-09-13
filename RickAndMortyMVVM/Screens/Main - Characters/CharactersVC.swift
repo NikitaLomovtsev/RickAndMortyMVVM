@@ -7,7 +7,6 @@
 
 import UIKit
 import Firebase
-import Kingfisher
 
 class CharactersVC: UIViewController, CharactersVMDelegate{
     
@@ -18,9 +17,6 @@ class CharactersVC: UIViewController, CharactersVMDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        KingfisherManager.shared.cache.clearCache()
-//        KingfisherManager.shared.cache.clearDiskCache()
-//        KingfisherManager.shared.cache.cleanExpiredCache()
         setupView()
     }
     

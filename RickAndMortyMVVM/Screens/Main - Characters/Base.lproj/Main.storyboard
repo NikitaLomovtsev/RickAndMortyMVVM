@@ -138,22 +138,11 @@
                     <connections>
                         <outlet property="charactersTableView" destination="hwU-6h-xDY" id="GKb-D2-Fmw"/>
                         <outlet property="searchBar" destination="xUk-ed-E3H" id="u1w-my-0fg"/>
-                        <segue destination="F5D-Hm-9Tc" kind="show" identifier="showDetails" id="zfG-n5-5dQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pmz-q4-hfn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2630" y="109"/>
-        </scene>
-        <!--CharacterDetailsVC-->
-        <scene sceneID="9FO-JC-tbF">
-            <objects>
-                <viewControllerPlaceholder storyboardName="CharacterDetails" referencedIdentifier="CharacterDetailsVC" id="F5D-Hm-9Tc" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="bDc-4Q-hfC"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ZNj-Pj-N6c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3249" y="75"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="xDy-W4-F6T">

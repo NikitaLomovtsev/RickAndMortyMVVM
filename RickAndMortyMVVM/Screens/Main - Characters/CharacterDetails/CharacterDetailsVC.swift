@@ -56,22 +56,26 @@ extension CharacterDetailsVC: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let data = viewModel.characterDetails[indexPath.section].row[indexPath.row]
+        
         if indexPath.section == 0{
             let cell = characterDetailsTableView.dequeueReusableCell(withIdentifier: "SnapshotCell", for: indexPath) as! CharacterDetailsCell
             cell.configureSnapshotCell(data: data as! String)
             return cell
         }
+        
         if indexPath.section == 1{
             let cell = characterDetailsTableView.dequeueReusableCell(withIdentifier: "NameCell", for: indexPath) as! CharacterDetailsCell
             cell.configureNameCell(data: data as! String)
             return cell
         }
+        
         if indexPath.section == 2{
             let staticText = viewModel.infoStaticText[indexPath.row]
             let cell = characterDetailsTableView.dequeueReusableCell(withIdentifier: "InfoLocationCell", for: indexPath) as! CharacterDetailsCell
             cell.configureInfoLocationCell(data: data as! String, staticText: staticText)
             return cell
         }
+        
         if indexPath.section == 3{
             let staticText = viewModel.locationStaticText[indexPath.row]
             let cell = characterDetailsTableView.dequeueReusableCell(withIdentifier: "InfoLocationCell", for: indexPath) as! CharacterDetailsCell

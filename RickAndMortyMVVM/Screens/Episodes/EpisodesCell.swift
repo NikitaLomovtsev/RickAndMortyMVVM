@@ -16,7 +16,6 @@ class EpisodesCell: UITableViewCell {
 
 
     func configure(data model: Episodes){
-
         nameLbl.text = model.name
         episodeLbl.text = model.episode
         airDateLbl.text = model.airDate

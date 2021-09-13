@@ -74,7 +74,6 @@ final class LocationsVM{
             guard locations.filter({$0.name.hasPrefix("\(letter)")}).count != 0 else { return }
             alphabetLocations.append(AlphabetLocations(header: "\(letter)", row: locations.filter({$0.name.hasPrefix("\(letter)")})))
         }
-        print(alphabetLocations)
     }
     
     func sendData(location: Locations){

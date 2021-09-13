@@ -32,9 +32,9 @@
                                                     <color key="backgroundColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Rl-y4-q2s">
-                                                    <rect key="frame" x="25" y="16" width="70" height="23"/>
+                                                    <rect key="frame" x="25" y="16" width="80" height="23"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="70" id="CBg-EC-tn6"/>
+                                                        <constraint firstAttribute="width" constant="80" id="CBg-EC-tn6"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

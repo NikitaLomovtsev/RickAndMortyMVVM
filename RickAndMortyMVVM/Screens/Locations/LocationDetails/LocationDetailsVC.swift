@@ -57,12 +57,14 @@ extension LocationDetailsVC: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let data = viewModel.locationDetails[indexPath.section].row[indexPath.row]
+        
         if indexPath.section == 0{
             let cell = locationDetailsTableView.dequeueReusableCell(withIdentifier: "InfoCell", for: indexPath) as! LocationDetailsCell
             let staticText = viewModel.infoStaticText[indexPath.row]
             cell.configureInfo(data: data as! String, staticText: staticText)
             return cell
         }
+        
         let cell = locationDetailsTableView.dequeueReusableCell(withIdentifier: "ResidentsCell", for: indexPath) as! LocationDetailsCell
         cell.configureCharacters(data: data as! Characters)
         return cell

@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Eqa-WI-aTv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Character DetailsVC-->
         <scene sceneID="84v-um-cdv">
             <objects>
-                <viewController storyboardIdentifier="CharacterDetailsVC" interfaceStyle="dark" id="Eqa-WI-aTv" customClass="CharacterDetailsVC" customModule="RickAndMortyMVVM" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CharacterDetailsVC" id="Eqa-WI-aTv" customClass="CharacterDetailsVC" customModule="RickAndMortyMVVM" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LfN-AA-XhS">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="r8X-Lj-bL4">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" red="0.14901960780000001" green="0.14901960780000001" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="separatorColor" red="0.14901960780000001" green="0.14901960780000001" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
@@ -179,14 +180,14 @@
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="elF-2e-KZu"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="r8X-Lj-bL4" firstAttribute="top" secondItem="elF-2e-KZu" secondAttribute="top" id="Pw6-0b-ahu"/>
+                            <constraint firstItem="r8X-Lj-bL4" firstAttribute="top" secondItem="LfN-AA-XhS" secondAttribute="top" id="V9O-o4-2hx"/>
                             <constraint firstItem="r8X-Lj-bL4" firstAttribute="leading" secondItem="elF-2e-KZu" secondAttribute="leading" id="Wh3-uS-PAI"/>
                             <constraint firstItem="r8X-Lj-bL4" firstAttribute="trailing" secondItem="elF-2e-KZu" secondAttribute="trailing" id="bjn-sU-Iab"/>
                             <constraint firstAttribute="bottom" secondItem="r8X-Lj-bL4" secondAttribute="bottom" id="ufj-Pd-NH9"/>
                         </constraints>
                     </view>
-                    <modalPageSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="characterDetailsTableView" destination="r8X-Lj-bL4" id="vJQ-m4-aLK"/>
                     </connections>
@@ -198,5 +199,8 @@
     </scenes>
     <resources>
         <image name="chevron.forward" catalog="system" width="96" height="128"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>
