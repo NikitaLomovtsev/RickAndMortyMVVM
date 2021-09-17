@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		513A91B226F3317200084E53 /* GenericTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513A91B126F3317200084E53 /* GenericTableViewController.swift */; };
 		513A91B426F3788400084E53 /* GenericDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513A91B326F3788300084E53 /* GenericDataModel.swift */; };
+		513A91B626F484C100084E53 /* GenericTableVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513A91B526F484C100084E53 /* GenericTableVM.swift */; };
 		513EED7A26E66C4700C44791 /* EpisodesVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513EED7926E66C4700C44791 /* EpisodesVM.swift */; };
 		513EED7C26E66CB200C44791 /* EpisodesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513EED7B26E66CB200C44791 /* EpisodesCell.swift */; };
 		513EED7E26E66F2F00C44791 /* LocationsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513EED7D26E66F2F00C44791 /* LocationsVM.swift */; };
@@ -55,6 +56,7 @@
 		34E90DF2EF2398CD978B5027 /* Pods-RickAndMortyMVVM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RickAndMortyMVVM.debug.xcconfig"; path = "Target Support Files/Pods-RickAndMortyMVVM/Pods-RickAndMortyMVVM.debug.xcconfig"; sourceTree = "<group>"; };
 		513A91B126F3317200084E53 /* GenericTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericTableViewController.swift; sourceTree = "<group>"; };
 		513A91B326F3788300084E53 /* GenericDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericDataModel.swift; sourceTree = "<group>"; };
+		513A91B526F484C100084E53 /* GenericTableVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericTableVM.swift; sourceTree = "<group>"; };
 		513EED7926E66C4700C44791 /* EpisodesVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesVM.swift; sourceTree = "<group>"; };
 		513EED7B26E66CB200C44791 /* EpisodesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesCell.swift; sourceTree = "<group>"; };
 		513EED7D26E66F2F00C44791 /* LocationsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsVM.swift; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 				519259A326E0E918004E653F /* NetworkManager.swift */,
 				51B6EFE926E6285800F0DE9E /* UIViewController+Extensions.swift */,
 				513A91B126F3317200084E53 /* GenericTableViewController.swift */,
+				513A91B526F484C100084E53 /* GenericTableVM.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -436,6 +439,7 @@
 				519259A426E0E918004E653F /* NetworkManager.swift in Sources */,
 				51CC41BD26E8A20100B54E03 /* LocationsModel.swift in Sources */,
 				513EED8026E6D99F00C44791 /* Errors.swift in Sources */,
+				513A91B626F484C100084E53 /* GenericTableVM.swift in Sources */,
 				51753EC126E36A2100646A29 /* AuthViewModel.swift in Sources */,
 				51CC41C626E8E7F600B54E03 /* EpisodeDetailsVC.swift in Sources */,
 				51753EB826E234A700646A29 /* CharacterDetailsVM.swift in Sources */,

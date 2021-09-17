@@ -8,14 +8,7 @@
 import Foundation
 import UIKit
 
-protocol LocationDetailsVMDelegate: AnyObject{
-    func reloadData()
-    func startSpinner()
-    func stopSpinner()
-}
-
-final class LocationDetailsVM{
-    weak var delegate: LocationDetailsVMDelegate?
+final class LocationDetailsVM: GenericTableViewModel {
     static var selectedLocationData: Locations?
     var selectedLocation: Locations? { return LocationDetailsVM.selectedLocationData}
     var locationDetails: [GenericData] = []
@@ -62,19 +55,5 @@ final class LocationDetailsVM{
     
     func sendData(character: Characters){
         CharacterDetailsVM.selectedCharacterData = character
-    }
-    
-    
-//MARK: Delegate functions
-    func tellDelegateToReloadData(){
-        delegate?.reloadData()
-    }
-    
-    func tellDelegateToStartSpinner(){
-        delegate?.startSpinner()
-    }
-    
-    func tellDelegateToStopSpinner(){
-        delegate?.stopSpinner()
     }
 }

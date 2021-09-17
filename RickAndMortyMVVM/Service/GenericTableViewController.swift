@@ -42,6 +42,5 @@ extension GenericTableViewController: UITableViewDelegate, UITableViewDataSource
             self.present(self.presentationVC, animated: true, completion: nil)
         }
     }
-    
-    
 }
+

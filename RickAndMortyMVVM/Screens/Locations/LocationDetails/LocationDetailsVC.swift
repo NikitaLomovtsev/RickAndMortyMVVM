@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LocationDetailsVC: GenericTableViewController, LocationDetailsVMDelegate {
+class LocationDetailsVC: GenericTableViewController, GenericTableViewModelDelegate {
 
     var viewModel = LocationDetailsVM()
     override var data: [GenericData] { return viewModel.locationDetails }

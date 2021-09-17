@@ -8,7 +8,7 @@
 import UIKit
 import Kingfisher
 
-class CharacterDetailsVC: GenericTableViewController, CharacterDetailsVMDelegate {
+class CharacterDetailsVC: GenericTableViewController, GenericTableViewModelDelegate {
     
     @IBOutlet weak var characterDetailsTableView: UITableView!
     

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class EpisodesVC: GenericTableViewController, EpisodesVMDelegate {
+class EpisodesVC: GenericTableViewController, GenericTableViewModelDelegate {
     
     var viewModel = EpisodesVM()
     override var data: [GenericData] { return viewModel.episodesWithSections }
@@ -18,11 +18,6 @@ class EpisodesVC: GenericTableViewController, EpisodesVMDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-    }
-    
-    override func sendData(data: Any) {
-        viewModel.sendData(episode: data as! Episodes)
-        
     }
     
     func setupView(){

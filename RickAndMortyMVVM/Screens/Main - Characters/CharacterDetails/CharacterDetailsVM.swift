@@ -8,14 +8,7 @@
 import Foundation
 import UIKit
 
-protocol CharacterDetailsVMDelegate: AnyObject{
-    func reloadData()
-    func startSpinner()
-    func stopSpinner()
-}
-
-final class CharacterDetailsVM{
-    weak var delegate: CharacterDetailsVMDelegate?
+final class CharacterDetailsVM: GenericTableViewModel{
     static var selectedCharacterData: Characters?
     var selectedCharacter: Characters? {return CharacterDetailsVM.selectedCharacterData}
     var characterDetails:[GenericData] = []
@@ -67,19 +60,6 @@ final class CharacterDetailsVM{
     
     func sendData(episode: Episodes){
         EpisodeDetailsVM.selectedEpisodeData = episode
-    }
-    
-//MARK: Delegate functions
-    func tellDelegateToReloadData(){
-        delegate?.reloadData()
-    }
-    
-    func tellDelegateToStartSpinner(){
-        delegate?.startSpinner()
-    }
-    
-    func tellDelegateToStopSpinner(){
-        delegate?.stopSpinner()
     }
     
 }

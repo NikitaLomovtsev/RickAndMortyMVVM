@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LocationsVC: GenericTableViewController, LocationsVMDelegate {
+class LocationsVC: GenericTableViewController, GenericTableViewModelDelegate {
     
     var viewModel = LocationsVM()
     override var data: [GenericData] { return viewModel.alphabetLocations }
@@ -51,7 +51,7 @@ extension LocationsVC {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LocationsCell", for: indexPath) as! LocationsCell
-        cell.configure(model: viewModel.alphabetLocations[indexPath.section].row[indexPath.row] as! Locations)
+        cell.configure(data: viewModel.alphabetLocations[indexPath.section].row[indexPath.row] as! Locations)
         return cell
     }
     

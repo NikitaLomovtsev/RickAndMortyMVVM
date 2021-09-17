@@ -8,14 +8,7 @@
 import Foundation
 import UIKit
 
-protocol CharactersVMDelegate: AnyObject{
-    func reloadData()
-    func startSpinner()
-    func stopSpinner()
-}
-
-final class CharactersVM{
-    weak var delegate: CharactersVMDelegate?
+final class CharactersVM: GenericTableViewModel{
     var characters: [Characters] = []
     var filteredCharacters: [GenericData] = []
     var characterData: [GenericData] = []
@@ -98,18 +91,6 @@ final class CharactersVM{
         }
     }
     
-//MARK: Delegate functions
-    func tellDelegateToStartSpinner(){
-        delegate?.startSpinner()
-    }
-    
-    func tellDelegateToStopSpinner(){
-        delegate?.stopSpinner()
-    }
-    
-    func tellDelegateToReloadData(){
-        delegate?.reloadData()
-    }
 }
 
 

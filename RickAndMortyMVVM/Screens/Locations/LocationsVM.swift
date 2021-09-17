@@ -8,15 +8,10 @@
 import Foundation
 import UIKit
 
-protocol LocationsVMDelegate: AnyObject{
-    func reloadData()
-    func startSpinner()
-    func stopSpinner()
-}
 
-final class LocationsVM{
+
+final class LocationsVM: GenericTableViewModel{
     
-    weak var delegate: LocationsVMDelegate?
     static var selectedEpisode: Locations?
     var pages: Int?
     var locations:[Locations] = []
@@ -79,19 +74,5 @@ final class LocationsVM{
     func sendData(location: Locations){
         LocationDetailsVM.selectedLocationData = location
     }
-    
-        
-//MARK: Delegate functions
-    func tellDelegateToStartSpinner(){
-        delegate?.startSpinner()
-    }
-    
-    func tellDelegateToStopSpinner(){
-        delegate?.stopSpinner()
-    }
-    
-    func tellDelegateToReloadData(){
-        delegate?.reloadData()
-    }
-}
 
+}

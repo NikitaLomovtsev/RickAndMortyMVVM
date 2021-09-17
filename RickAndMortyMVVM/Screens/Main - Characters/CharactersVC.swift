@@ -8,7 +8,7 @@
 import UIKit
 import Firebase
 
-class CharactersVC: GenericTableViewController, CharactersVMDelegate{
+class CharactersVC: GenericTableViewController, GenericTableViewModelDelegate{
     
     @IBOutlet weak var charactersTableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
