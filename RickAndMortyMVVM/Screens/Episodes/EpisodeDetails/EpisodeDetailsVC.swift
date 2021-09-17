@@ -19,6 +19,10 @@ class EpisodeDetailsVC: GenericTableViewController, EpisodeDetailsVMDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        cellIds = [
+            0: "InfoCell",
+            -1: "ResidentsCell"
+        ]
         setupView()
     }
     
@@ -52,23 +56,4 @@ class EpisodeDetailsVC: GenericTableViewController, EpisodeDetailsVMDelegate {
         print("EpisodeDetailsVC DEINIT")
     }
     
-}
-
-//MARK: Table View Config
-extension EpisodeDetailsVC {
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let data = viewModel.episodeDetails[indexPath.section].row[indexPath.row]
-        switch indexPath.section {
-        case 0:
-            let cell = episodeDetailsTableView.dequeueReusableCell(withIdentifier: "InfoCell", for: indexPath) as! EpisodeDetailsCell
-            let staticText = viewModel.infoStaticText[indexPath.row]
-            cell.configureInfo(data: data as! String, staticText: staticText)
-            return cell
-        default:
-            let cell = episodeDetailsTableView.dequeueReusableCell(withIdentifier: "ResidentsCell", for: indexPath) as! EpisodeDetailsCell
-            cell.configureCharacters(data: data as! Characters)
-            return cell
-        }
-    }
 }

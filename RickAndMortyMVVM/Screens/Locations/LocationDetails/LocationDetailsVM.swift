@@ -55,7 +55,11 @@ final class LocationDetailsVM{
     func generateDataForSelectedLocation(){
         guard let selectedLocation = selectedLocation else { return }
         locationDetails = [
-            GenericData(header: "INFO", row: [selectedLocation.name, selectedLocation.dimension, selectedLocation.type]),
+            GenericData(header: "INFO", row: [
+                ["title": infoStaticText[0], "text": selectedLocation.name],
+                ["title": infoStaticText[1], "text" :selectedLocation.dimension],
+                ["title": infoStaticText[2], "text": selectedLocation.type]
+            ]),
             GenericData(header: "CHARACTERS", row: characters)
         ]
     }

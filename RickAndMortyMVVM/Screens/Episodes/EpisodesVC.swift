@@ -17,6 +17,7 @@ class EpisodesVC: GenericTableViewController, EpisodesVMDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        cellIds = [-1: "EpisodesCell"]
         setupView()
     }
     
@@ -45,16 +46,5 @@ class EpisodesVC: GenericTableViewController, EpisodesVMDelegate {
         DispatchQueue.main.async {
             self.episodesTableView.reloadData()
         }
-    }
-}
-
-//MARK: Table View Config
-extension EpisodesVC {
-
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let data = viewModel.episodesWithSections[indexPath.section].row[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "EpisodesCell", for: indexPath) as! EpisodesCell
-        cell.configure(data: data as! Episodes)
-        return cell
     }
 }

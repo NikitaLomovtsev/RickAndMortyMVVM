@@ -14,12 +14,12 @@ class EpisodesCell: UITableViewCell {
     @IBOutlet weak var episodeLbl: UILabel!
     @IBOutlet weak var airDateLbl: UILabel!
 
-
-    func configure(data model: Episodes){
-        nameLbl.text = model.name
-        episodeLbl.text = model.episode
-        airDateLbl.text = model.airDate
-        bgImg.layer.cornerRadius = 10
+    @objc override func configure(_ data: Any) {
+        if let model = data as? Episodes {
+            nameLbl.text = model.name
+            episodeLbl.text = model.episode
+            airDateLbl.text = model.airDate
+            bgImg.layer.cornerRadius = 10
+        }
     }
-
 }

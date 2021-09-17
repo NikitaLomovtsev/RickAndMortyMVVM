@@ -18,6 +18,13 @@ class CharacterDetailsVC: GenericTableViewController, CharacterDetailsVMDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        cellIds = [
+            0: "SnapshotCell",
+            1: "NameCell",
+            2: "InfoLocationCell",
+            3: "InfoLocationCell",
+            -1: "EpisodesCell",
+        ]
         setupView()
     }
     

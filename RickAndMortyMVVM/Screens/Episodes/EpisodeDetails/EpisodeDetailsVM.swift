@@ -55,7 +55,11 @@ final class EpisodeDetailsVM{
     func generateDataForSelectedEpisode(){
         guard let selectedEpisode = selectedEpisode else { return }
         episodeDetails = [
-            GenericData(header: "INFO", row: [selectedEpisode.name, selectedEpisode.airDate, selectedEpisode.episode]),
+            GenericData(header: "INFO", row: [
+                ["title": infoStaticText[0], "text": selectedEpisode.name],
+                ["title": infoStaticText[1], "text": selectedEpisode.airDate],
+                ["title": infoStaticText[2], "text": selectedEpisode.episode]
+            ]),
             GenericData(header: "CHARACTERS", row: characters)
         ]
     }

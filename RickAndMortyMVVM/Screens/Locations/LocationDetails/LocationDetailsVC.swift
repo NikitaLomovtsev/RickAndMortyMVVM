@@ -16,6 +16,10 @@ class LocationDetailsVC: GenericTableViewController, LocationDetailsVMDelegate {
     @IBOutlet weak var locationDetailsTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        cellIds = [
+            0: "InfoCell",
+            -1: "ResidentsCell"
+        ]
         setupView()
     }
     
@@ -50,23 +54,3 @@ class LocationDetailsVC: GenericTableViewController, LocationDetailsVMDelegate {
     }
 
 }
-
-//MARK: Table View Config
-extension LocationDetailsVC {
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let data = viewModel.locationDetails[indexPath.section].row[indexPath.row]
-        switch indexPath.section {
-        case 0:
-            let cell = locationDetailsTableView.dequeueReusableCell(withIdentifier: "InfoCell", for: indexPath) as! LocationDetailsCell
-            let staticText = viewModel.infoStaticText[indexPath.row]
-            cell.configureInfo(data: data as! String, staticText: staticText)
-            return cell
-        default:
-            let cell = locationDetailsTableView.dequeueReusableCell(withIdentifier: "ResidentsCell", for: indexPath) as! LocationDetailsCell
-            cell.configureCharacters(data: data as! Characters)
-            return cell
-        }
-    }
-}
-

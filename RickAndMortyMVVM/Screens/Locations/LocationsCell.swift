@@ -14,10 +14,12 @@ class LocationsCell: UITableViewCell {
     @IBOutlet weak var residentsLbl: UILabel!
  
     
-    func configure(model: Locations){
-        nameLbl.text = model.name
-        residentsLbl.text = "\(model.residents.count) resident(s)"
-        bgImg.layer.cornerRadius = 10
+    @objc override func configure(_ data: Any) {
+        if let model = data as? Locations {
+            nameLbl.text = model.name
+            residentsLbl.text = "\(model.residents.count) resident(s)"
+            bgImg.layer.cornerRadius = 10
+        }
     }
 
 }

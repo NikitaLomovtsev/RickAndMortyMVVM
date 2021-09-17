@@ -7,26 +7,18 @@
 
 import UIKit
 
-class LocationDetailsCell: UITableViewCell {
+class LocationDetailsCell: BasicGenericTableViewCell {
 
     @IBOutlet weak var snapshotImg: UIImageView!
-    @IBOutlet weak var bgImg: UIImageView!
-    @IBOutlet weak var staticLbl: UILabel!
-    @IBOutlet weak var infoLbl: UILabel!
 
-    
-    func configureInfo(data model: String, staticText: String){
-        bgImg.layer.cornerRadius = 10
-        infoLbl.text = model
-        staticLbl.text = staticText
-    }
-
-    func configureCharacters(data model: Characters){
-        bgImg.layer.cornerRadius = 10
-        infoLbl.text = model.name
-        snapshotImg.kf.indicatorType = .activity
-        snapshotImg.kf.setImage(with: URL(string: model.image), placeholder: UIImage(named: "loadingSnaphot"), options: [.transition(.fade(0.4))])
-        snapshotImg.layer.cornerRadius = 10
-        snapshotImg.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
+    override func configure(_ data: Any) {
+        super.configure(data)
+        if let model = data as? Characters {
+            infoLbl.text = model.name
+            snapshotImg.kf.indicatorType = .activity
+            snapshotImg.kf.setImage(with: URL(string: model.image), placeholder: UIImage(named: "loadingSnaphot"), options: [.transition(.fade(0.4))])
+            snapshotImg.layer.cornerRadius = 10
+            snapshotImg.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
+        }
     }
 }

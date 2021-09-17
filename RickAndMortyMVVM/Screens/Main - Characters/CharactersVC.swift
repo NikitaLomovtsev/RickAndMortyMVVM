@@ -89,6 +89,4 @@ extension CharactersVC: UISearchBarDelegate{
         guard let text = searchBar.text else { return }
         viewModel.search(text: text)
     }
-    
-    
 }

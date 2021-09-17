@@ -16,6 +16,7 @@ class LocationsVC: GenericTableViewController, LocationsVMDelegate {
     @IBOutlet weak var locationsTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.cellIds = [-1: "LocationsCell"]
         setupView()
     }
     
@@ -48,13 +49,6 @@ class LocationsVC: GenericTableViewController, LocationsVMDelegate {
 
 //MARK: Table View Config
 extension LocationsVC {
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "LocationsCell", for: indexPath) as! LocationsCell
-        cell.configure(model: viewModel.alphabetLocations[indexPath.section].row[indexPath.row] as! Locations)
-        return cell
-    }
-    
     func sectionIndexTitles(for tableView: UITableView) -> [String]? {
         return viewModel.alphabetLocations.map({$0.header})
     }

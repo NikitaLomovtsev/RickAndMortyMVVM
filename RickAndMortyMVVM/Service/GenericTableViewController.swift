@@ -7,16 +7,37 @@
 
 import UIKit
 
+class BasicGenericTableViewCell: UITableViewCell {
+    @IBOutlet weak var bgImg: UIImageView!
+    @IBOutlet weak var staticLbl: UILabel!
+    @IBOutlet weak var infoLbl: UILabel!
+    
+    @objc override func configure(_ data: Any) {
+        bgImg.layer.cornerRadius = 10
+        if let data = data as? [String: String],
+           let title = data["title"],
+           let text = data["text"] {
+            staticLbl.text = title
+            infoLbl.text = text
+        }
+    }
+}
+
 class GenericTableViewController: UIViewController {
     var allowedSelectionSection: Int?
     
+    var cellIds: [Int: String] = [:]
     var data: [GenericData] { return [GenericData(header: "", row: [])] }
-    
     var presentationVC: UIViewController { return self }
     
     func sendData(data: Any) {
     }
 
+}
+
+@objc extension UITableViewCell {
+    func configure(_ data: Any) {
+    }
 }
 
 extension GenericTableViewController: UITableViewDelegate, UITableViewDataSource{
@@ -33,7 +54,11 @@ extension GenericTableViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let data = self.data[indexPath.section].row[indexPath.row]
+        let cellId = self.cellIds[indexPath.section] ?? self.cellIds[-1] ?? ""
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
+        cell.configure(data)
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
