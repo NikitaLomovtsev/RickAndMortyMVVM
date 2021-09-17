@@ -25,11 +25,3 @@ struct LocationsInfo: Decodable{
     let count: Int
 }
 
-struct AlphabetLocations{
-    var header: String
-    var row: [Any]
-    init(header: String, row: [Any]) {
-        self.header = header
-        self.row = row
-    }
-}

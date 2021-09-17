@@ -18,7 +18,7 @@ final class CharacterDetailsVM{
     weak var delegate: CharacterDetailsVMDelegate?
     static var selectedCharacterData: Characters?
     var selectedCharacter: Characters? {return CharacterDetailsVM.selectedCharacterData}
-    var characterDetails:[CharacterDetails] = []
+    var characterDetails:[GenericData] = []
     var episodes: [Episodes] = []
     var snapshotImage: UIImage?
     var infoStaticText = ["Species", "Gender", "Status"]
@@ -57,11 +57,11 @@ final class CharacterDetailsVM{
     func generateDataForSelectedCharacter(){
         guard let selectedCharacter = selectedCharacter else { return }
         characterDetails = [
-            CharacterDetails(header: "SNAPSHOT", row: [selectedCharacter.image]),
-            CharacterDetails(header: "NAME", row: [selectedCharacter.name]),
-            CharacterDetails(header: "INFO", row: [selectedCharacter.species, selectedCharacter.gender, selectedCharacter.status]),
-            CharacterDetails(header: "LOCATION", row: [selectedCharacter.location.name, selectedCharacter.origin.name]),
-            CharacterDetails(header: "EPISODES", row: episodes)
+            GenericData(header: "SNAPSHOT", row: [selectedCharacter.image]),
+            GenericData(header: "NAME", row: [selectedCharacter.name]),
+            GenericData(header: "INFO", row: [selectedCharacter.species, selectedCharacter.gender, selectedCharacter.status]),
+            GenericData(header: "LOCATION", row: [selectedCharacter.location.name, selectedCharacter.origin.name]),
+            GenericData(header: "EPISODES", row: episodes)
         ]
     }
     

@@ -32,13 +32,3 @@ struct EpisodesInfo: Decodable{
     let pages: Int
     let count: Int
 }
-
-
-struct Seasons {
-    var header: String
-    var row: [Any]
-    init(header: String, row: [Any]) {
-        self.header = header
-        self.row = row
-    }
-}

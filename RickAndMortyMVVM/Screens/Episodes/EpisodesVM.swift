@@ -20,7 +20,7 @@ final class EpisodesVM{
     static var selectedEpisode: Episodes?
     var pages: Int?
     var episodes:[Episodes] = []
-    var episodesWithSections: [Seasons] = []
+    var episodesWithSections: [GenericData] = []
     var seasons = 1 //temporary value, will calculate later
     var detailsVC: UIViewController { return UIStoryboard(name: "EpisodeDetails", bundle: nil).instantiateViewController(identifier: "EpisodeDetailsVC")}
     
@@ -90,9 +90,9 @@ final class EpisodesVM{
     func episodesWithSectionsCreating(){
         for number in 1...seasons{
             if number < 10{
-                episodesWithSections.append(Seasons(header: "SEASON \(number)", row: episodes.filter({$0.episode.contains("S0\(number)")})))
+                episodesWithSections.append(GenericData(header: "SEASON \(number)", row: episodes.filter({$0.episode.contains("S0\(number)")})))
             } else {
-                episodesWithSections.append(Seasons(header: "SEASON \(number)", row: episodes.filter({$0.episode.contains("S\(number)")})))
+                episodesWithSections.append(GenericData(header: "SEASON \(number)", row: episodes.filter({$0.episode.contains("S\(number)")})))
             }
         }
     }

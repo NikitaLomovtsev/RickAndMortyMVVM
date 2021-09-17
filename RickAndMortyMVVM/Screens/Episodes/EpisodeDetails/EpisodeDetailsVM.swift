@@ -18,7 +18,7 @@ final class EpisodeDetailsVM{
     weak var delegate: EpisodeDetailsVMDelegate?
     static var selectedEpisodeData: Episodes?
     var selectedEpisode: Episodes? { return EpisodeDetailsVM.selectedEpisodeData}
-    var episodeDetails: [Seasons] = []
+    var episodeDetails: [GenericData] = []
     var characters: [Characters] = []
     var infoStaticText = ["Name", "Air date", "Code"]
     var characterDetailsVC: UIViewController { return UIStoryboard(name: "CharacterDetails", bundle: nil).instantiateViewController(identifier: "CharacterDetailsVC")}
@@ -55,8 +55,8 @@ final class EpisodeDetailsVM{
     func generateDataForSelectedEpisode(){
         guard let selectedEpisode = selectedEpisode else { return }
         episodeDetails = [
-            Seasons(header: "INFO", row: [selectedEpisode.name, selectedEpisode.airDate, selectedEpisode.episode]),
-            Seasons(header: "CHARACTERS", row: characters)
+            GenericData(header: "INFO", row: [selectedEpisode.name, selectedEpisode.airDate, selectedEpisode.episode]),
+            GenericData(header: "CHARACTERS", row: characters)
         ]
     }
     

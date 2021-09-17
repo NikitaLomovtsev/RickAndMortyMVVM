@@ -7,15 +7,21 @@
 
 import UIKit
 
-class LocationsVC: UIViewController, LocationsVMDelegate {
+class LocationsVC: GenericTableViewController, LocationsVMDelegate {
     
     var viewModel = LocationsVM()
+    override var data: [GenericData] { return viewModel.alphabetLocations }
+    override var presentationVC: UIViewController { return viewModel.detailsVC }
+    
     @IBOutlet weak var locationsTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
     }
     
+    override func sendData(data: Any) {
+        viewModel.sendData(location: data as! Locations)
+    }
     
     func setupView(){
         locationsTableView.delegate = self
@@ -41,21 +47,9 @@ class LocationsVC: UIViewController, LocationsVMDelegate {
 }
 
 //MARK: Table View Config
-extension LocationsVC: UITableViewDataSource, UITableViewDelegate{
+extension LocationsVC {
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        viewModel.alphabetLocations.count
-    }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        viewModel.alphabetLocations[section].header
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.alphabetLocations[section].row.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LocationsCell", for: indexPath) as! LocationsCell
         cell.configure(model: viewModel.alphabetLocations[indexPath.section].row[indexPath.row] as! Locations)
         return cell
@@ -63,10 +57,5 @@ extension LocationsVC: UITableViewDataSource, UITableViewDelegate{
     
     func sectionIndexTitles(for tableView: UITableView) -> [String]? {
         return viewModel.alphabetLocations.map({$0.header})
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel.sendData(location: viewModel.alphabetLocations[indexPath.section].row[indexPath.row] as! Locations)
-        self.present(viewModel.detailsVC, animated: true, completion: nil)
     }
 }

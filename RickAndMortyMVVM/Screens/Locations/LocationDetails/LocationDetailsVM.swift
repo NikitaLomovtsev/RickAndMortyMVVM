@@ -18,7 +18,7 @@ final class LocationDetailsVM{
     weak var delegate: LocationDetailsVMDelegate?
     static var selectedLocationData: Locations?
     var selectedLocation: Locations? { return LocationDetailsVM.selectedLocationData}
-    var locationDetails: [AlphabetLocations] = []
+    var locationDetails: [GenericData] = []
     var characters: [Characters] = []
     var infoStaticText = ["Name", "Dimension", "Type"]
     var characterDetailsVC: UIViewController { return UIStoryboard(name: "CharacterDetails", bundle: nil).instantiateViewController(identifier: "CharacterDetailsVC")}
@@ -55,8 +55,8 @@ final class LocationDetailsVM{
     func generateDataForSelectedLocation(){
         guard let selectedLocation = selectedLocation else { return }
         locationDetails = [
-            AlphabetLocations(header: "INFO", row: [selectedLocation.name, selectedLocation.dimension, selectedLocation.type]),
-            AlphabetLocations(header: "CHARACTERS", row: characters)
+            GenericData(header: "INFO", row: [selectedLocation.name, selectedLocation.dimension, selectedLocation.type]),
+            GenericData(header: "CHARACTERS", row: characters)
         ]
     }
     

@@ -8,16 +8,21 @@
 import UIKit
 import Firebase
 
-class CharactersVC: UIViewController, CharactersVMDelegate{
+class CharactersVC: GenericTableViewController, CharactersVMDelegate{
     
-    var viewModel = CharactersVM()
     @IBOutlet weak var charactersTableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+    }
+    var viewModel = CharactersVM()
+    override var data: [GenericData] { return viewModel.filteredCharacters }
+    override var presentationVC: UIViewController { return viewModel.detailsVC }
+    
+    override func sendData(data: Any) {
+        viewModel.sendData(character: data as! Characters)
     }
     
 //MARK: Setup View
@@ -68,25 +73,14 @@ class CharactersVC: UIViewController, CharactersVMDelegate{
 }
 
 //MARK: Table View Config
-extension CharactersVC: UITableViewDataSource, UITableViewDelegate{
+extension CharactersVC {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.filteredCharacters.count
-        
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CharacterCell", for: indexPath) as! CharactersCell
-        let model = viewModel.filteredCharacters[indexPath.row]
-        cell.configure(model: model)
+        let model = viewModel.filteredCharacters[indexPath.section].row[indexPath.row]
+        cell.configure(model: model as! Characters)
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel.sendData(character: viewModel.filteredCharacters[indexPath.row])
-        self.present(viewModel.detailsVC, animated: true, completion: nil)
-    }
-    
 }
 
 //MARK: Search Bar Config

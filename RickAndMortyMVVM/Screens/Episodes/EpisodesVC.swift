@@ -7,15 +7,23 @@
 
 import UIKit
 
-class EpisodesVC: UIViewController, EpisodesVMDelegate {
+class EpisodesVC: GenericTableViewController, EpisodesVMDelegate {
     
     var viewModel = EpisodesVM()
+    override var data: [GenericData] { return viewModel.episodesWithSections }
+    override var presentationVC: UIViewController { return viewModel.detailsVC }
+    
     @IBOutlet weak var episodesTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
     }
     
+    override func sendData(data: Any) {
+        viewModel.sendData(episode: data as! Episodes)
+        
+    }
     
     func setupView(){
         episodesTableView.delegate = self
@@ -41,29 +49,12 @@ class EpisodesVC: UIViewController, EpisodesVMDelegate {
 }
 
 //MARK: Table View Config
-extension EpisodesVC: UITableViewDataSource, UITableViewDelegate{
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.episodesWithSections[section].row.count
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return viewModel.episodesWithSections.count
-    }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return viewModel.episodesWithSections[section].header
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+extension EpisodesVC {
+
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let data = viewModel.episodesWithSections[indexPath.section].row[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "EpisodesCell", for: indexPath) as! EpisodesCell
         cell.configure(data: data as! Episodes)
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel.sendData(episode: viewModel.episodesWithSections[indexPath.section].row[indexPath.row] as! Episodes)
-        self.present(viewModel.detailsVC, animated: true, completion: nil)
     }
 }

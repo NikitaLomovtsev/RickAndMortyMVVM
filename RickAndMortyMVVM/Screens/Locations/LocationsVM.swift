@@ -20,7 +20,7 @@ final class LocationsVM{
     static var selectedEpisode: Locations?
     var pages: Int?
     var locations:[Locations] = []
-    var alphabetLocations: [AlphabetLocations] = []
+    var alphabetLocations: [GenericData] = []
     var detailsVC: UIViewController { return UIStoryboard(name: "LocationDetails", bundle: nil).instantiateViewController(identifier: "LocationDetailsVC")}
     
     func getData(){
@@ -72,7 +72,7 @@ final class LocationsVM{
     func alphabetLocationsCreation(){
         for letter in "ABCDEFGHIJKLMNOPQRSTUVWXYZ"{
             guard locations.filter({$0.name.hasPrefix("\(letter)")}).count != 0 else { return }
-            alphabetLocations.append(AlphabetLocations(header: "\(letter)", row: locations.filter({$0.name.hasPrefix("\(letter)")})))
+            alphabetLocations.append(GenericData(header: "\(letter)", row: locations.filter({$0.name.hasPrefix("\(letter)")})))
         }
     }
     

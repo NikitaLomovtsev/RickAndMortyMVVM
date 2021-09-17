@@ -37,15 +37,3 @@ struct Location: Decodable{
 struct Origin: Decodable{
     let name: String
 }
-
-
-
-
-struct CharacterDetails {
-    var header: String
-    var row: [Any]
-    init(header: String, row: [Any]) {
-        self.header = header
-        self.row = row
-    }
-}

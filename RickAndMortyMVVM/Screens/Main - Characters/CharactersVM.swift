@@ -16,12 +16,10 @@ protocol CharactersVMDelegate: AnyObject{
 
 final class CharactersVM{
     weak var delegate: CharactersVMDelegate?
-    var selectedCharacter: Characters?
     var characters: [Characters] = []
-    var filteredCharacters: [Characters] = []
+    var filteredCharacters: [GenericData] = []
+    var characterData: [GenericData] = []
     var pages: Int?
-    var count: Int?
-    var images: [String : UIImage] = [:]
     var detailsVC: UIViewController {return UIStoryboard(name: "CharacterDetails", bundle: nil).instantiateViewController(identifier: "CharacterDetailsVC")}
     
     func getData(){
@@ -29,7 +27,8 @@ final class CharactersVM{
         getPagesCount {
             self.getJsonData {
                 self.characters = self.characters.sorted(by: {$0.id < $1.id})
-                self.filteredCharacters = self.characters
+                self.generateTestData()
+                self.filteredCharacters = self.characterData
                 self.tellDelegateToReloadData()
                 self.tellDelegateToStopSpinner()
             }
@@ -41,7 +40,6 @@ final class CharactersVM{
             switch result{
             case .success(let array):
                 self.pages = array.info.pages
-                self.count = array.info.count
                 completion()
             case .failure(let error):
                 print("\(Errors.dataError.rawValue) \(error)")
@@ -70,20 +68,27 @@ final class CharactersVM{
         }
     }
     
+    func generateTestData(){
+        characterData = [
+            GenericData(header: "", row: characters),
+        ]
+    }
+    
     func sendData(character: Characters){
         CharacterDetailsVM.selectedCharacterData = character
     }
     
+    
     func search(text: String){
         let dispatchGroup = DispatchGroup()
-        filteredCharacters = []
+        filteredCharacters[0].row.removeAll()
         dispatchGroup.enter()
         if text == ""{
-            filteredCharacters = characters
+            filteredCharacters = characterData
         } else {
             for (index, _) in characters.enumerated(){
                 if characters[index].name.lowercased().contains(text.lowercased()){
-                    filteredCharacters.append(characters[index])
+                    filteredCharacters[0].row.append(characters[index])
                 }
             }
         }
