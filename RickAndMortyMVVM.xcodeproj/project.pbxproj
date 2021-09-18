@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		513A91B226F3317200084E53 /* GenericTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513A91B126F3317200084E53 /* GenericTableViewController.swift */; };
+		513A91B226F3317200084E53 /* GenericTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513A91B126F3317200084E53 /* GenericTableVC.swift */; };
 		513A91B426F3788400084E53 /* GenericDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513A91B326F3788300084E53 /* GenericDataModel.swift */; };
 		513A91B626F484C100084E53 /* GenericTableVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513A91B526F484C100084E53 /* GenericTableVM.swift */; };
 		513EED7A26E66C4700C44791 /* EpisodesVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513EED7926E66C4700C44791 /* EpisodesVM.swift */; };
@@ -54,7 +54,7 @@
 
 /* Begin PBXFileReference section */
 		34E90DF2EF2398CD978B5027 /* Pods-RickAndMortyMVVM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RickAndMortyMVVM.debug.xcconfig"; path = "Target Support Files/Pods-RickAndMortyMVVM/Pods-RickAndMortyMVVM.debug.xcconfig"; sourceTree = "<group>"; };
-		513A91B126F3317200084E53 /* GenericTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericTableViewController.swift; sourceTree = "<group>"; };
+		513A91B126F3317200084E53 /* GenericTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericTableVC.swift; sourceTree = "<group>"; };
 		513A91B326F3788300084E53 /* GenericDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericDataModel.swift; sourceTree = "<group>"; };
 		513A91B526F484C100084E53 /* GenericTableVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericTableVM.swift; sourceTree = "<group>"; };
 		513EED7926E66C4700C44791 /* EpisodesVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesVM.swift; sourceTree = "<group>"; };
@@ -131,6 +131,16 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		513A91B726F5DFAF00084E53 /* Generics */ = {
+			isa = PBXGroup;
+			children = (
+				513A91B326F3788300084E53 /* GenericDataModel.swift */,
+				513A91B126F3317200084E53 /* GenericTableVC.swift */,
+				513A91B526F484C100084E53 /* GenericTableVM.swift */,
+			);
+			path = Generics;
+			sourceTree = "<group>";
+		};
 		51753EAD26E21FED00646A29 /* Enums */ = {
 			isa = PBXGroup;
 			children = (
@@ -190,7 +200,6 @@
 				519EBBC426D3AA28004F9127 /* CharactersModel.swift */,
 				51B6EFE326E4CA5200F0DE9E /* EpisodesModel.swift */,
 				51CC41BC26E8A20100B54E03 /* LocationsModel.swift */,
-				513A91B326F3788300084E53 /* GenericDataModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -213,8 +222,6 @@
 			children = (
 				519259A326E0E918004E653F /* NetworkManager.swift */,
 				51B6EFE926E6285800F0DE9E /* UIViewController+Extensions.swift */,
-				513A91B126F3317200084E53 /* GenericTableViewController.swift */,
-				513A91B526F484C100084E53 /* GenericTableVM.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -240,6 +247,7 @@
 		519EBBAB26D3988E004F9127 /* RickAndMortyMVVM */ = {
 			isa = PBXGroup;
 			children = (
+				513A91B726F5DFAF00084E53 /* Generics */,
 				51753EAD26E21FED00646A29 /* Enums */,
 				5192599C26E0E54A004E653F /* Model */,
 				51753EB026E222FD00646A29 /* Screens */,
@@ -427,7 +435,7 @@
 				519259A626E0F90A004E653F /* CharactersVM.swift in Sources */,
 				519EBBB126D3988E004F9127 /* CharactersVC.swift in Sources */,
 				51753EB626E2246F00646A29 /* CharacterDetailsVC.swift in Sources */,
-				513A91B226F3317200084E53 /* GenericTableViewController.swift in Sources */,
+				513A91B226F3317200084E53 /* GenericTableVC.swift in Sources */,
 				51CC41BB26E8A0E400B54E03 /* LocationsCell.swift in Sources */,
 				51B6EFEA26E6285900F0DE9E /* UIViewController+Extensions.swift in Sources */,
 				513EED7E26E66F2F00C44791 /* LocationsVM.swift in Sources */,

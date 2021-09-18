@@ -8,54 +8,20 @@
 import UIKit
 import Kingfisher
 
-class CharacterDetailsVC: GenericTableViewController, GenericTableViewModelDelegate {
+class CharacterDetailsVC: GenericTableVC<CharacterDetailsVM> {
     
     @IBOutlet weak var characterDetailsTableView: UITableView!
     
-    var viewModel = CharacterDetailsVM()
-    override var data: [GenericData] { return viewModel.characterDetails }
-    override var presentationVC: UIViewController { return viewModel.episodeDetailsVC }
+    override var tableView: UITableView { return characterDetailsTableView }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupView()
     }
     
-    override func sendData(data: Any) {
-        viewModel.sendData(episode: data as! Episodes)
-    }
-    
-    func setupView(){
-        allowedSelectionSection = 4
-        characterDetailsTableView.delegate = self
-        characterDetailsTableView.dataSource = self
-        viewModel.delegate = self
-        viewModel.getData()
-    }
-    
-    func startSpinner(){
-        spinnerStart()
-    }
-    
-    func stopSpinner() {
-        spinnerStop()
-    }
-    
-    func reloadData() {
-        DispatchQueue.main.async {
-            self.characterDetailsTableView.reloadData()
-        }
-    }
-    deinit {
-        print("CharacterDetailsVC DEINIT")
-    }
-}
-
-//MARK: Table View Config
-extension CharacterDetailsVC {
-    
+//MARK: TableView cell setup
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let data = viewModel.characterDetails[indexPath.section].row[indexPath.row]
+        let data = viewModel.data[indexPath.section].row[indexPath.row]
         switch indexPath.section {
         case 0:
             let cell = characterDetailsTableView.dequeueReusableCell(withIdentifier: "SnapshotCell", for: indexPath) as! CharacterDetailsCell
@@ -81,4 +47,5 @@ extension CharacterDetailsVC {
             return cell
         }
     }
+
 }

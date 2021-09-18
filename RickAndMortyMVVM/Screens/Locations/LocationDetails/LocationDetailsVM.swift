@@ -8,36 +8,34 @@
 import Foundation
 import UIKit
 
-final class LocationDetailsVM: GenericTableViewModel {
+final class LocationDetailsVM: GenericTableVM {
+    
+    override var presentationVC: UIViewController? { return UIStoryboard(name: "CharacterDetails", bundle: nil).instantiateViewController(identifier: "CharacterDetailsVC") }
+    
     static var selectedLocationData: Locations?
     var selectedLocation: Locations? { return LocationDetailsVM.selectedLocationData}
-    var locationDetails: [GenericData] = []
     var characters: [Characters] = []
     var infoStaticText = ["Name", "Dimension", "Type"]
-    var characterDetailsVC: UIViewController { return UIStoryboard(name: "CharacterDetails", bundle: nil).instantiateViewController(identifier: "CharacterDetailsVC")}
     
     
-    func getData(){
+    override func getData(){
+        allowedSelectionSection = 1
         tellDelegateToStartSpinner()
         getCharactersForSelectedLocation {
-            self.generateDataForSelectedLocation()
+            self.generateData()
             self.tellDelegateToStopSpinner()
             self.tellDelegateToReloadData()
         }
     }
     
+//MARK: Get characters from Json
     func getCharactersForSelectedLocation(completion: @escaping() -> Void){
         let dispatchGroup = DispatchGroup()
         for element in selectedLocation!.residents{
             dispatchGroup.enter()
             NetworkManager.shared.downloadData(urlString: element, dataType: Characters.self) { result in
-                switch result{
-                case .success(let character):
-                    self.characters.append(character)
+                self.characters.append(result)
                     dispatchGroup.leave()
-                case .failure(let error):
-                    print("\(Errors.dataError.rawValue) \(error)")
-                }
             }
         }
         dispatchGroup.notify(queue: .main){
@@ -45,15 +43,19 @@ final class LocationDetailsVM: GenericTableViewModel {
         }
     }
     
-    func generateDataForSelectedLocation(){
+//MARK: Generate data to fill the table
+    func generateData(){
         guard let selectedLocation = selectedLocation else { return }
-        locationDetails = [
+        data = [
             GenericData(header: "INFO", row: [selectedLocation.name, selectedLocation.dimension, selectedLocation.type]),
             GenericData(header: "CHARACTERS", row: characters)
         ]
     }
     
-    func sendData(character: Characters){
-        CharacterDetailsVM.selectedCharacterData = character
+//MARK: sendData
+    override func sendData(_ data: Any) {
+        if let character = data as? Characters {
+            CharacterDetailsVM.selectedCharacterData = character
+        }
     }
 }

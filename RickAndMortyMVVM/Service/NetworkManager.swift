@@ -10,18 +10,17 @@ import UIKit
 
 class NetworkManager{
     static let shared = NetworkManager()
-    
-    
-    func downloadData<T: Decodable>(urlString: String, dataType: T.Type, completion: @escaping (Result<T, Error>) -> Void){
+
+    func downloadData<T: Decodable>(urlString: String, dataType: T.Type, completion: @escaping (T) -> Void){
         guard let url = URL(string: urlString) else{return}
         URLSession.shared.dataTask(with: url) { data, response, error in
             if error == nil {
                 do {
                     guard let data = data else {return}
                     let dataArray = try JSONDecoder().decode(dataType, from: data)
-                    completion(.success(dataArray))
+                    completion(dataArray)
                 }catch{
-                    completion(.failure(error))
+                    print(error.localizedDescription)
                 }
             }
         }.resume()

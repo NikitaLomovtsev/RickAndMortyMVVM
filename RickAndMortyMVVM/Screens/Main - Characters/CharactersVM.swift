@@ -8,52 +8,43 @@
 import Foundation
 import UIKit
 
-final class CharactersVM: GenericTableViewModel{
+final class CharactersVM: GenericTableVM{
+    
+    override var presentationVC: UIViewController { return UIStoryboard(name: "CharacterDetails", bundle: nil).instantiateViewController(identifier: "CharacterDetailsVC") }
     var characters: [Characters] = []
-    var filteredCharacters: [GenericData] = []
     var characterData: [GenericData] = []
     var pages: Int?
-    var detailsVC: UIViewController {return UIStoryboard(name: "CharacterDetails", bundle: nil).instantiateViewController(identifier: "CharacterDetailsVC")}
     
-    func getData(){
+    override func getData(){
         tellDelegateToStartSpinner()
         getPagesCount {
             self.getJsonData {
                 self.characters = self.characters.sorted(by: {$0.id < $1.id})
-                self.generateTestData()
-                self.filteredCharacters = self.characterData
+                self.generateCharacterData()
+                self.data = self.characterData
                 self.tellDelegateToReloadData()
                 self.tellDelegateToStopSpinner()
             }
         }
     }
-    
+
+//MARK: Get count of Json pages
     func getPagesCount(completion: @escaping () -> Void){
         NetworkManager.shared.downloadData(urlString: RequestURLS.charactersPageURL.rawValue, dataType: CharactersData.self) { result in
-            switch result{
-            case .success(let array):
-                self.pages = array.info.pages
+                self.pages = result.info.pages
                 completion()
-            case .failure(let error):
-                print("\(Errors.dataError.rawValue) \(error)")
-            }
         }
     }
     
+//MARK: JsonData for characters
     func getJsonData(completion: @escaping () -> Void){
         let dispatchGroup = DispatchGroup()
         guard let pages = pages else { return }
         for number in 1...pages{
             dispatchGroup.enter()
             NetworkManager.shared.downloadData(urlString: "\(RequestURLS.charactersPageURL.rawValue)\(number)", dataType: CharactersData.self) { result in
-                switch result{
-                case .success(let array):
-                    let charactersArray = array.results
-                    self.characters.append(contentsOf: charactersArray)
+                self.characters.append(contentsOf: result.results)
                     dispatchGroup.leave()
-                case .failure(let error):
-                    print("\(Errors.dataError.rawValue) \(error)")
-                }
             }
         }
         dispatchGroup.notify(queue: .main){
@@ -61,27 +52,30 @@ final class CharactersVM: GenericTableViewModel{
         }
     }
     
-    func generateTestData(){
+    func generateCharacterData(){
         characterData = [
             GenericData(header: "", row: characters),
         ]
     }
     
-    func sendData(character: Characters){
-        CharacterDetailsVM.selectedCharacterData = character
+//MARK: sendData
+    override func sendData(_ data: Any){
+        if let character = data as? Characters {
+            CharacterDetailsVM.selectedCharacterData = character
+        }
     }
     
-    
+//MARK: Search
     func search(text: String){
         let dispatchGroup = DispatchGroup()
-        filteredCharacters[0].row.removeAll()
+        data[0].row.removeAll()
         dispatchGroup.enter()
         if text == ""{
-            filteredCharacters = characterData
+            data = characterData
         } else {
             for (index, _) in characters.enumerated(){
                 if characters[index].name.lowercased().contains(text.lowercased()){
-                    filteredCharacters[0].row.append(characters[index])
+                    data[0].row.append(characters[index])
                 }
             }
         }

@@ -8,38 +8,36 @@
 import Foundation
 import UIKit
 
-final class CharacterDetailsVM: GenericTableViewModel{
+final class CharacterDetailsVM: GenericTableVM{
+    
+    override var presentationVC: UIViewController { return UIStoryboard(name: "EpisodeDetails", bundle: nil).instantiateViewController(identifier: "EpisodeDetailsVC") }
+    
     static var selectedCharacterData: Characters?
     var selectedCharacter: Characters? {return CharacterDetailsVM.selectedCharacterData}
-    var characterDetails:[GenericData] = []
     var episodes: [Episodes] = []
     var snapshotImage: UIImage?
     var infoStaticText = ["Species", "Gender", "Status"]
     var locationStaticText = ["Location", "Origin"]
-    var episodeDetailsVC: UIViewController { return UIStoryboard(name: "EpisodeDetails", bundle: nil).instantiateViewController(identifier: "EpisodeDetailsVC")}
     
     
-    func getData(){
+    override func getData(){
+        allowedSelectionSection = 4
         tellDelegateToStartSpinner()
         getEpisodesForSelectedCharacter {
-            self.generateDataForSelectedCharacter()
+            self.generateData()
             self.tellDelegateToStopSpinner()
             self.tellDelegateToReloadData()
         }
     }
     
+//MARK: Get episodes from Json
     func getEpisodesForSelectedCharacter(completion: @escaping() -> Void){
         let dispatchGroup = DispatchGroup()
         for element in selectedCharacter!.episode{
             dispatchGroup.enter()
             NetworkManager.shared.downloadData(urlString: element, dataType: Episodes.self) { result in
-                switch result{
-                case .success(let episode):
-                    self.episodes.append(episode)
+                    self.episodes.append(result)
                     dispatchGroup.leave()
-                case .failure(let error):
-                    print("\(Errors.dataError.rawValue) \(error)")
-                }
             }
         }
         dispatchGroup.notify(queue: .main){
@@ -47,9 +45,10 @@ final class CharacterDetailsVM: GenericTableViewModel{
         }
     }
     
-    func generateDataForSelectedCharacter(){
+//MARK: Generate data to fill the table
+    func generateData(){
         guard let selectedCharacter = selectedCharacter else { return }
-        characterDetails = [
+        data = [
             GenericData(header: "SNAPSHOT", row: [selectedCharacter.image]),
             GenericData(header: "NAME", row: [selectedCharacter.name]),
             GenericData(header: "INFO", row: [selectedCharacter.species, selectedCharacter.gender, selectedCharacter.status]),
@@ -57,9 +56,12 @@ final class CharacterDetailsVM: GenericTableViewModel{
             GenericData(header: "EPISODES", row: episodes)
         ]
     }
-    
-    func sendData(episode: Episodes){
-        EpisodeDetailsVM.selectedEpisodeData = episode
+
+//MARK: sendData
+    override func sendData(_ data: Any) {
+        if let episode = data as? Episodes {
+            EpisodeDetailsVM.selectedEpisodeData = episode
+        }
     }
     
 }

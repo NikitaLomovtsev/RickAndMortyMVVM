@@ -7,55 +7,18 @@
 
 import UIKit
 
-class LocationDetailsVC: GenericTableViewController, GenericTableViewModelDelegate {
-
-    var viewModel = LocationDetailsVM()
-    override var data: [GenericData] { return viewModel.locationDetails }
-    override var presentationVC: UIViewController { return viewModel.characterDetailsVC }
+class LocationDetailsVC: GenericTableVC<LocationDetailsVM> {
     
     @IBOutlet weak var locationDetailsTableView: UITableView!
+    override var tableView: UITableView { return locationDetailsTableView }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupView()
     }
     
-    override func sendData(data: Any) {
-        viewModel.sendData(character: data as! Characters)
-    }
-    
-    func setupView(){
-        allowedSelectionSection = 1
-        locationDetailsTableView.delegate = self
-        locationDetailsTableView.dataSource = self
-        viewModel.delegate = self
-        viewModel.getData()
-    }
-    
-    func startSpinner() {
-        spinnerStart()
-    }
-    
-    func stopSpinner() {
-        spinnerStop()
-    }
-    
-    func reloadData() {
-        DispatchQueue.main.async {
-            self.locationDetailsTableView.reloadData()
-        }
-    }
-    
-    deinit {
-        print("LocationDetailsVC DEINIT")
-    }
-
-}
-
-//MARK: Table View Config
-extension LocationDetailsVC {
-    
+//MARK: TableView cell setup
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let data = viewModel.locationDetails[indexPath.section].row[indexPath.row]
+        let data = viewModel.data[indexPath.section].row[indexPath.row]
         switch indexPath.section {
         case 0:
             let cell = locationDetailsTableView.dequeueReusableCell(withIdentifier: "InfoCell", for: indexPath) as! LocationDetailsCell
@@ -69,4 +32,3 @@ extension LocationDetailsVC {
         }
     }
 }
-

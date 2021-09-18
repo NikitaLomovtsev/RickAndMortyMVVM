@@ -7,49 +7,22 @@
 
 import UIKit
 
-class EpisodesVC: GenericTableViewController, GenericTableViewModelDelegate {
-    
-    var viewModel = EpisodesVM()
-    override var data: [GenericData] { return viewModel.episodesWithSections }
-    override var presentationVC: UIViewController { return viewModel.detailsVC }
+class EpisodesVC: GenericTableVC<EpisodesVM>{
     
     @IBOutlet weak var episodesTableView: UITableView!
     
+    override var tableView: UITableView { return episodesTableView }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupView()
     }
-    
-    func setupView(){
-        episodesTableView.delegate = self
-        episodesTableView.dataSource = self
-        viewModel.delegate = self
-        viewModel.getData()
-    }
-    
-    func startSpinner() {
-        spinnerStart()
-    }
-    
-    func stopSpinner() {
-        spinnerStop()
-    }
-    
-    //Reload TableView
-    func reloadData() {
-        DispatchQueue.main.async {
-            self.episodesTableView.reloadData()
-        }
-    }
-}
 
-//MARK: Table View Config
-extension EpisodesVC {
-
+//MARK: TableView cell setup
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let data = viewModel.episodesWithSections[indexPath.section].row[indexPath.row]
+        let data = viewModel.data[indexPath.section].row[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "EpisodesCell", for: indexPath) as! EpisodesCell
         cell.configure(data: data as! Episodes)
         return cell
     }
+    
 }
