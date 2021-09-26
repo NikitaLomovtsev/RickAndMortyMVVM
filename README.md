@@ -1,6 +1,6 @@
 # RickAndMortyMVVM
 
-This app it's a guide with informations about of the most controversial and funny cartoon of all time.
+This app is a guide with informations about the most controversial and funny cartoon of all time.
 
 With this application you can keep informed about:
 
