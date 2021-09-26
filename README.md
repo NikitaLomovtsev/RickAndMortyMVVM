@@ -1,6 +1,12 @@
 # RickAndMortyMVVM
 
-App using the Rick and Morty API to display the characters, locations and episodes. MVVM architecture.
+This app it's a guide with informations about of the most controversial and funny cartoon of all time.
+
+With this application you can keep informed about:
+
+* Characters
+* Locations
+* Episodes
 
 <img src="https://raw.githubusercontent.com/NikitaLomovtsev/RickAndMortyMVVM/main/rickapppromo.png?raw=true" />
 
