@@ -12,4 +12,8 @@ With this application you can keep informed about:
 
 # Keywords
 
-*
+* MVVM architecture
+* JSON & Codable
+* Firebase
+* Kingfisher
+* Rick&Morty api
